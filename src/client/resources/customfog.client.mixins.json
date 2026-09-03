@@ -1,0 +1,15 @@
+{
+	"required": true,
+	"package": "dev.customfog.client.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"FogRendererMixin",
+		"GameRendererMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

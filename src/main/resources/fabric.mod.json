@@ -1,0 +1,36 @@
+{
+	"schemaVersion": 1,
+	"id": "customfog",
+	"version": "${version}",
+	"name": "Custom Fog",
+	"description": "Replaces vanilla linear fog with client-only volumetric world mist.",
+	"authors": [
+		"customfog"
+	],
+	"license": "CC0-1.0",
+	"icon": "assets/customfog/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.customfog.client.CustomFogClient"
+		]
+	},
+	"mixins": [
+		{
+			"config": "customfog.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.1.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"iris": "*"
+	},
+	"custom": {
+		"iris:compatible": true
+	}
+}
