@@ -1,47 +1,55 @@
 # Custom Fog
 
-Client-only Fabric mod for Minecraft **26.1.2**. Replaces vanilla distance fog with world-space volumetric mist.
+Клиентский мод для Fabric, Minecraft **26.1.2**. Ванильный линейный туман нахуй — вместо него объёмный туман в мире, не пузырь на камере.
 
-Repository: https://github.com/Guest-04/castomfog
+Репозиторий: https://github.com/Guest-04/castomfog
 
-## Requirements
+## Что нужно
 
 - Minecraft 26.1.2
 - Java 25
 - Fabric Loader 0.19.3+
 - Fabric API `0.155.2+26.1.2`
-- Optional: Iris + Complementary Unbound (or other packs)
+- По желанию: Iris + Complementary Unbound (или другой пак)
 
-## Install
+## Установка
 
-1. Put `customfog-1.4.0.jar` in `.minecraft/mods`
-2. Put Fabric API in `mods` too
-3. Launch the Fabric 26.1.2 profile
+1. Кинь `customfog-1.4.0.jar` в `.minecraft/mods`
+2. Fabric API туда же, без него даже не пытайся
+3. Запусти профиль Fabric 26.1.2
 
-Build from source:
+Сборка из исходников:
 
 ```
 gradlew.bat build
 ```
 
-Jar: `build/libs/customfog-1.4.0.jar`
+Готовая банка: `build/libs/customfog-1.4.0.jar`
 
-## Fog
+## Как работает туман
 
-Density lives in the **world**, not as a bubble on the camera.
+Плотность сидит в **мире**. Идёшь в банку — тонешь. Стоишь у спавна — почти ничего.
 
-| Distance from (0, 0) on XZ | Air | Water |
+| Дистанция от (0, 0) по XZ | Воздух | Вода |
 |---|---|---|
-| under ~1000 | almost none | murky, worse if deep |
-| 1000 → 5000 | ramps up | thicker + depth |
-| 5000+ | near-zero visibility | ink, especially deep |
+| меньше ~1000 | почти нет | мутная, глубже — хуже |
+| 1000 → 5000 | набирает | гуще + глубина |
+| 5000+ | почти нихуя не видно | чернила, особенно на дне |
 
-Water uses a separate color/density profile. Deeper Y under sea level (~63) adds more fog.
+Вода — отдельный профиль (цвет и плотность). Чем ниже уровня моря (~63), тем плотнее.
 
-## Shaders
+Лава и порошковый снег не трогаем — там ваниль.
 
-With Iris the fog is drawn after the pack's final pass, using a depth copy taken before composite. Complementary Unbound should keep looking shaded; our layer sits on top. If a pack already does heavy underwater fog, the two can stack. Config: `config/customfog.json`.
+## Шейдеры
 
-## License
+С Iris туман рисуется после финального пасса пака. Depth копируется до composite, Complementary Unbound остаётся шейдерным, наш слой сверху.
 
-CC0-1.0
+Если пак сам уже жрёт подводный туман — слои могут сложиться в кашу. Тогда либо крути `config/customfog.json`, либо выключай оверлей.
+
+## Конфиг
+
+`config/customfog.json` — плотность, цвета, профили воздуха/незера/энда/воды.
+
+## Лицензия
+
+CC0-1.0. Делай что хочешь.
